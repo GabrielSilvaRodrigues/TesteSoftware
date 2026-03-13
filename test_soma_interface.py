@@ -12,7 +12,7 @@ class TestSomaInterfaceVisivel(unittest.TestCase):
 
     def setUp(self):
         chrome_options = ChromeOptions()
-        chrome_options.add_argument("--headless=new")  # Comentado para execução visível
+        #chrome_options.add_argument("--headless=new")  # Comentado para execução visível
         chromedriver_path = ChromeDriverManager().install()  # Armazena o caminho retornado
         service = ChromeService(executable_path=chromedriver_path)
         print(f"ChromeDriver instalado em: {chromedriver_path}")  # Exibe o caminho correto
