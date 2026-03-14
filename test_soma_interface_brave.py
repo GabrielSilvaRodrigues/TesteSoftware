@@ -36,14 +36,29 @@ class TestSomaInterfaceBrave(unittest.TestCase):
         input1 = self.driver.find_element(By.ID, "num1")
         input2 = self.driver.find_element(By.ID, "num2")
         botao_soma = self.driver.find_element(By.ID, "somar")
-        
-        input1.send_keys("10")
-        input2.send_keys("20")
+        resultado_div = self.driver.find_element(By.ID, "resultado")
+
+        input1.send_keys("5")
+        input2.send_keys("3")
         botao_soma.click()
 
         wait = WebDriverWait(self.driver, 10)
-        resultado = wait.until(EC.visibility_of_element_located((By.ID, 'resultado')))
-        self.assertEqual(resultado.text, "30")
+        wait.until(EC.text_to_be_present_in_element((By.ID, 'resultado'), '8'))
+        self.assertEqual(resultado_div.text, "8")
+
+    def test_soma_interface_numeros_negativos(self):
+        input1 = self.driver.find_element(By.ID, "num1")
+        input2 = self.driver.find_element(By.ID, "num2")
+        botao_soma = self.driver.find_element(By.ID, "somar")
+        resultado_div = self.driver.find_element(By.ID, "resultado")
+
+        input1.send_keys("-5")
+        input2.send_keys("3")
+        botao_soma.click()
+
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.text_to_be_present_in_element((By.ID, 'resultado'), '-2'))
+        self.assertEqual(resultado_div.text, "-2")
 
 if __name__ == "__main__":
     unittest.main()
