@@ -30,30 +30,47 @@ class TestSomaInterfaceVisivel(unittest.TestCase):
     def test_soma_interface(self):
         input1 = self.driver.find_element(By.ID, "num1")
         input2 = self.driver.find_element(By.ID, "num2")
+        input3 = self.driver.find_element(By.ID, "num3")
+        input4 = self.driver.find_element(By.ID, "num4")
+        input5 = self.driver.find_element(By.ID, "num5")
+        input6 = self.driver.find_element(By.ID, "num6")
         botao_soma = self.driver.find_element(By.ID, "somar")
         resultado_div = self.driver.find_element(By.ID, "resultado")
 
         input1.send_keys("5")
         input2.send_keys("3")
+        input3.send_keys("5")
+        input4.send_keys("3")
+        input5.send_keys("5")
+        input6.send_keys("3")
+        
         botao_soma.click()
 
-        wait = WebDriverWait(self.driver, 10)
-        wait.until(EC.text_to_be_present_in_element((By.ID, 'resultado'), '8'))
-        self.assertEqual(resultado_div.text, "8")
+        wait = WebDriverWait(self.driver, 0.0000001)
+        wait.until(EC.text_to_be_present_in_element((By.ID, 'resultado'), '24'))
+        self.assertEqual(resultado_div.text, "24")
 
     def test_soma_interface_numeros_negativos(self):
         input1 = self.driver.find_element(By.ID, "num1")
         input2 = self.driver.find_element(By.ID, "num2")
+        input3 = self.driver.find_element(By.ID, "num3")
+        input4 = self.driver.find_element(By.ID, "num4")
+        input5 = self.driver.find_element(By.ID, "num5")
+        input6 = self.driver.find_element(By.ID, "num6")
         botao_soma = self.driver.find_element(By.ID, "somar")
         resultado_div = self.driver.find_element(By.ID, "resultado")
 
         input1.send_keys("-5")
         input2.send_keys("3")
+        input3.send_keys("-5")
+        input4.send_keys("3")
+        input5.send_keys("-5")
+        input6.send_keys("3")
         botao_soma.click()
 
-        wait = WebDriverWait(self.driver, 10)
-        wait.until(EC.text_to_be_present_in_element((By.ID, 'resultado'), '-2'))
-        self.assertEqual(resultado_div.text, "-2")
+        wait = WebDriverWait(self.driver, 0.0000001)
+        wait.until(EC.text_to_be_present_in_element((By.ID, 'resultado'), '-6'))
+        self.assertEqual(resultado_div.text, "-6")
 
 if __name__ == "__main__":
     unittest.main()
