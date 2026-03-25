@@ -55,8 +55,8 @@ class TestContextoGame(unittest.TestCase):
             raise
 
 
-    def test_submit_cartola_and_validate_expected_format(self):
-        """Envia 'cartola', extrai tentativa | palavra | posição e valida formato esperado"""
+    def test_submit_sardinha_and_validate_expected_format(self):
+        """Envia 'sardinha', extrai tentativa | palavra | posição e valida formato esperado"""
         wait = WebDriverWait(self.driver, 20)
         input_field = wait.until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "input[type='text'], input"))
@@ -64,12 +64,12 @@ class TestContextoGame(unittest.TestCase):
 
 
         input_field.clear()
-        input_field.send_keys("cartola")
+        input_field.send_keys("sardinha")
         input_field.send_keys(Keys.ENTER)
 
 
         wait.until(
-            lambda d: "cartola" in d.find_element(By.TAG_NAME, "body").text.lower()
+            lambda d: "sardinha" in d.find_element(By.TAG_NAME, "body").text.lower()
         )
 
 
@@ -77,16 +77,16 @@ class TestContextoGame(unittest.TestCase):
         normalized = " ".join(page_text.split()).lower()
 
 
-        matches = re.findall(r"\b(\d+)\s+cartola\s+(\d+)\b", normalized)
-        self.assertTrue(matches, "Não foi possível extrair tentativa e posição para 'cartola'")
+        matches = re.findall(r"\b(\d+)\s+sardinha\s+(\d+)\b", normalized)
+        self.assertTrue(matches, "Não foi possível extrair tentativa e posição para 'sardinha'")
 
 
         tentativa, posicao = matches[0]
-        retorno_formatado = f"{tentativa} | cartola | {posicao}"
-        esperado = "1 | cartola | 1"
+        retorno_formatado = f"{tentativa} | sardinha | {posicao}"
+        esperado = "1 | sardinha | 12467"
 
 
-        print(f"RETORNO_CARTOLA: {retorno_formatado}")
+        print(f"RETORNO_SARDINHA: {retorno_formatado}")
         self.assertEqual(retorno_formatado, esperado)
 
 
