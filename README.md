@@ -75,3 +75,19 @@ xvfb-run -a python3 -m unittest -v test_soma_interface_brave.py
 - **Display virtual (xvfb)**: Em ambientes Linux sem interface gráfica, `xvfb-run -a` fornece um display virtual para a execução dos testes.
 - **Navegadores headless**: O código pode ser adaptado para execução headless adicionando a opção `--headless=new` nas ChromeOptions.
 - **Timeout de espera**: Os testes usam `WebDriverWait` com timeout explícito para sincronização com elementos da página.
+
+
+## Teste API Google
+
+## Instalação
+
+### 1. Configurar ambiente virtual (opcional, recomendado)
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+export GEMINI_API_KEY="Substitua pelo seu token"
+python google_api.py
+```
+
